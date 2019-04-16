@@ -1,6 +1,8 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { Row, Column } from 'ruucm-blocks'
+import img001 from '../Img/1.jpg'
+import img002 from '../Img/2.jpg'
 
 const Wrap = styled.div`
   background: white;
@@ -32,6 +34,14 @@ const RowWrap = styled.div`
   margin: 0 50px;
 `
 
+const ColumnStyle = styled.div`
+  margin: 10px;
+`
+const Image = styled.img`
+  width: 100%;
+  border-radius: 4px;
+`
+
 const Home = () => {
   return (
     <Wrap>
@@ -44,9 +54,37 @@ const Home = () => {
 
       <RowWrap>
         <Row>
-          <Column col="4">1</Column>
-          <Column col="4">2</Column>
-          <Column col="4">3</Column>
+          <Column col="4">
+            <ColumnStyle>
+              <Image src={img001} />
+            </ColumnStyle>
+          </Column>
+          <Column col="4">
+            <ColumnStyle>
+              <Image src={img002} />
+            </ColumnStyle>
+          </Column>
+          <Column col="4">
+            <ColumnStyle>
+              <Image src={img001} />
+            </ColumnStyle>
+          </Column>
+
+          <Column col="4">
+            <ColumnStyle>
+              <Image src={img001} />
+            </ColumnStyle>
+          </Column>
+          <Column col="4">
+            <ColumnStyle>
+              <Image src={img002} />
+            </ColumnStyle>
+          </Column>
+          <Column col="4">
+            <ColumnStyle>
+              <Image src={img001} />
+            </ColumnStyle>
+          </Column>
         </Row>
       </RowWrap>
     </Wrap>
