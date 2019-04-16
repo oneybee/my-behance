@@ -15,6 +15,9 @@ const Header = styled.div`
   box-shadow: 0 0 4px rgba(25, 25, 25, 0.1);
   box-sizing: border-box;
   height: 60px;
+  position: sticky;
+  top: 0px;
+  z-index: 2;
 `
 const HeaderMenu = styled.span`
   cursor: pointer;
@@ -22,8 +25,8 @@ const HeaderMenu = styled.span`
   font-weight: 600;
   padding: 0 15px;
 
-  position: sticky;
-  top: 40px;
+  position: relative;
+  top: 20px;
   :hover {
     color: #0057ff;
   }
@@ -40,6 +43,7 @@ const ColumnStyle = styled.div`
 const Image = styled.img`
   width: 100%;
   border-radius: 4px;
+  cursor: pointer;
 `
 
 const Home = () => {
@@ -83,6 +87,22 @@ const Home = () => {
           <Column col="4">
             <ColumnStyle>
               <Image src={img001} />
+            </ColumnStyle>
+          </Column>
+
+          <Column col="4">
+            <ColumnStyle>
+              <Image src={img002} />
+            </ColumnStyle>
+          </Column>
+          <Column col="4">
+            <ColumnStyle>
+              <Image src={img001} />
+            </ColumnStyle>
+          </Column>
+          <Column col="4">
+            <ColumnStyle>
+              <Image src={img002} />
             </ColumnStyle>
           </Column>
         </Row>

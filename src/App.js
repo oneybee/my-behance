@@ -9,6 +9,7 @@ import Upload from './Upload'
 const Wrap = styled.div`
   background: black;
 `
+
 const Link1 = styled(Link)`
   color: white;
   text-decoration: none;
