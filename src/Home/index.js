@@ -39,11 +39,20 @@ const RowWrap = styled.div`
 
 const ColumnStyle = styled.div`
   margin: 10px;
+  position: relative;
 `
 const Image = styled.img`
   width: 100%;
   border-radius: 4px;
   cursor: pointer;
+`
+const ImageHover = styled.div`
+  /* margin-top: auto; */
+  /* top: 0; */
+  bottom: 0;
+  position: absolute;
+  padding: 30px 15px 18px;
+  background: pink;
 `
 
 const Home = () => {
@@ -61,6 +70,7 @@ const Home = () => {
           <Column col="4">
             <ColumnStyle>
               <Image src={img001} />
+              <ImageHover>Cienne</ImageHover>
             </ColumnStyle>
           </Column>
           <Column col="4">
