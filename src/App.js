@@ -1,31 +1,38 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import styled, { css } from 'styled-components'
+
 import Home from './Home'
 import Work from './Work'
 import Upload from './Upload'
 
+const Wrap = styled.div`
+  background: black;
+`
+const Link1 = styled(Link)`
+  color: white;
+  text-decoration: none;
+  margin-left: 10px;
+`
+
 const App = () => {
   return (
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/work">Work</Link>
-          </li>
-          <li>
-            <Link to="/upload">Upload</Link>
-          </li>
-        </ul>
+      <Wrap>
+        <div>
+          <Link1 to="/">Behance</Link1>
 
-        <hr />
+          <Link1 to="/work">Work</Link1>
 
-        <Route exact path="/" component={Home} />
-        <Route path="/work" component={Work} />
-        <Route path="/upload" component={Upload} />
-      </div>
+          <Link1 to="/upload">Upload</Link1>
+
+          {/* <hr /> */}
+
+          <Route exact path="/" component={Home} />
+          <Route path="/work" component={Work} />
+          <Route path="/upload" component={Upload} />
+        </div>
+      </Wrap>
     </Router>
   )
 }
