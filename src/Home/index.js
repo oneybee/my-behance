@@ -1,8 +1,11 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+
 import { Row, Column } from 'ruucm-blocks'
 import img001 from '../Img/1.jpg'
 import img002 from '../Img/2.jpg'
+import Work from '../Work'
 
 const Wrap = styled.div`
   background: white;
@@ -67,25 +70,49 @@ const ColumnIn = styled.div`
   width: 100%;
   height: 100%;
 `
+const ImageHoverWrap = styled.div`
+  bottom: 3px;
+  position: absolute;
+  padding: 30px 0 18px;
+  background: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, 0.6) 81%);
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+  opacity: 0;
+  transition-duration: 0.1s;
+  :hover {
+    opacity: 1;
+    transition-duration: 0.1s;
+  }
+`
 const Image = styled.img`
   width: 100%;
   border-radius: 4px;
   cursor: pointer;
+  &:hover {
+    .sc-gZMcBi {
+      opacity: 1;
+      transition-duration: 0.1s;
+    }
+  }
 `
 
-const ImageHoverWrap = styled.div`
-  bottom: 0;
-  position: absolute;
-  padding: 30px 15px 18px;
-  background: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, 0.6) 81%);
-  cursor: pointer;
-`
-
-const ImageHover = styled.div`
+const HoverWrap = styled.div`
   /* margin-top: auto; */
   /* top: 0; */
-  width: 100%;
   color: white;
+  padding: 0 15px;
+`
+const HoverHeader = styled.div`
+  padding-bottom: 2px;
+  font-size: 16px;
+  font-weight: 700;
+  :hover {
+    text-decoration: underline;
+  }
+`
+const HoverName = styled.div`
+  font-size: 13px;
   :hover {
     text-decoration: underline;
   }
@@ -113,10 +140,16 @@ const Home = () => {
           <Column col="4">
             <ColumnStyle>
               <ColumnIn>
-                <Image src="https://mir-s3-cdn-cf.behance.net/projects/404/23c50b78953779.5cb5858c3aee6.jpg" />
-                <ImageHoverWrap>
-                  <ImageHover>Cienne</ImageHover>
-                </ImageHoverWrap>
+                <Link to="/work">
+                  <Image src="https://mir-s3-cdn-cf.behance.net/projects/404/23c50b78953779.5cb5858c3aee6.jpg" />
+                  <ImageHoverWrap>
+                    <HoverWrap>
+                      <HoverHeader>Blend Station II</HoverHeader>
+                      <HoverName>Futura .</HoverName>
+                    </HoverWrap>
+                  </ImageHoverWrap>
+                </Link>
+                <Route exact path="/work" component={Work} />
               </ColumnIn>
             </ColumnStyle>
           </Column>
