@@ -78,12 +78,12 @@ const ImageHoverWrap = styled.div`
   cursor: pointer;
   width: 100%;
   border-radius: 4px;
-  /* opacity: 0;
+  opacity: 0;
   transition-duration: 0.1s;
   :hover {
     opacity: 1;
     transition-duration: 0.1s;
-  } */
+  }
 `
 const Image = styled.img`
   width: 100%;
@@ -98,8 +98,6 @@ const Image = styled.img`
 `
 
 const HoverWrap = styled.div`
-  /* margin-top: auto; */
-  /* top: 0; */
   color: white;
   padding: 0 15px;
 `
@@ -107,6 +105,7 @@ const HoverHeader = styled.div`
   padding-bottom: 2px;
   font-size: 16px;
   font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   :hover {
     text-decoration: underline;
   }
@@ -114,6 +113,7 @@ const HoverHeader = styled.div`
 const HoverName = styled.div`
   font-size: 13px;
   display: inline-block;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   :hover {
     text-decoration: underline;
   }
