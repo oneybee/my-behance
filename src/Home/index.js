@@ -19,7 +19,7 @@ const Header = styled.div`
   box-sizing: border-box;
   height: 60px;
   position: sticky;
-  top: 0px;
+  top: 60px;
   z-index: 2;
 `
 const HeaderMenu = styled.span`
