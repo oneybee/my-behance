@@ -5,6 +5,7 @@ import axios from 'axios'
 var lat = ['35.555861199999995']
 var lon = ['127.0780834']
 
+//geolocated props example code
 class Demo extends React.Component {
   render() {
     return !this.props.isGeolocationAvailable ? (
@@ -42,7 +43,8 @@ class Demo extends React.Component {
   }
 }
 
-class weather extends React.Component {
+//upload page
+class Upload extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -53,6 +55,8 @@ class weather extends React.Component {
   }
 
   componentDidMount() {
+    //fetch weather api
+
     // fetch('http://api.openweathermap.org/data/2.5/forecast?APPID=59bc39177608b635b3514f8156021c3f&lat=' + '35' + '&lon=' + lon)
     fetch('http://api.openweathermap.org/data/2.5/forecast?APPID=59bc39177608b635b3514f8156021c3f&', {
       params: {
@@ -60,6 +64,8 @@ class weather extends React.Component {
         lon: 127,
       },
     })
+      //axios code and it works well, but state was not work well
+
       // axios
       //   .get('http://api.openweathermap.org/data/2.5/weather', {
       //     params: {
@@ -74,7 +80,7 @@ class weather extends React.Component {
         console.log(responseJson)
         console.log(this.props.coords)
         this.setState({
-          // data: [{ name: responseJson.city.name, cnt: responseJson.cnt, cloud: responseJson.list[2].clouds.all }],
+          data: [{ name: responseJson.city.name, cnt: responseJson.cnt, cloud: responseJson.list[2].clouds.all }],
         })
         this.setState({
           // lat: [this.props.coords.latitude],
@@ -97,6 +103,8 @@ class weather extends React.Component {
     )
   }
 }
+
+//axios example code
 
 // function getWeather(props) {
 //   axios
@@ -122,4 +130,4 @@ export default geolocated({
     enableHighAccuracy: false,
   },
   userDecisionTimeout: 5000,
-})(weather)
+})(Upload)
