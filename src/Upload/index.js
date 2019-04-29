@@ -57,13 +57,14 @@ class Upload extends React.Component {
   componentDidMount() {
     //fetch weather api
 
-    // fetch('http://api.openweathermap.org/data/2.5/forecast?APPID=59bc39177608b635b3514f8156021c3f&lat=' + '35' + '&lon=' + lon)
-    fetch('http://api.openweathermap.org/data/2.5/forecast?APPID=59bc39177608b635b3514f8156021c3f&', {
-      params: {
-        lat: 35,
-        lon: 127,
-      },
-    })
+    fetch('http://api.openweathermap.org/data/2.5/forecast?APPID=59bc39177608b635b3514f8156021c3f&lat=' + '35' + '&lon=' + lon)
+      // fetch('http://api.openweathermap.org/data/2.5/forecast?APPID=59bc39177608b635b3514f8156021c3f&', {
+      //   params: {
+      //     lat: 35,
+      //     lon: 127,
+      //   },
+      // })
+
       //axios code and it works well, but state was not work well
 
       // axios
