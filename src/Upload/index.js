@@ -33,7 +33,7 @@ class weather extends Component {
   render() {
     return (
       <div>
-        <span>sdfsdf</span>
+        <span>weather api</span>
       </div>
     )
   }
