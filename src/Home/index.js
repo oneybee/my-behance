@@ -152,7 +152,7 @@ class Home extends React.Component {
     console.log('nextProps', nextProps)
     // console.log('sss', nextProps.coords.latitude)
     axios
-      .get('http://api.openweathermap.org/data/2.5/weather', {
+      .get('https://api.openweathermap.org/data/2.5/weather', {
         params: {
           lat: nextProps.coords.latitude,
           lon: nextProps.coords.longitude,
