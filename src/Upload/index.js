@@ -63,9 +63,9 @@ class Upload extends React.Component {
     }
   }
 
-  async componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     console.log('nextProps', nextProps)
-    console.log('sss', nextProps.coords.latitude)
+    // console.log('sss', nextProps.coords.latitude)
     axios
       .get('http://api.openweathermap.org/data/2.5/weather', {
         params: {
@@ -76,8 +76,6 @@ class Upload extends React.Component {
       })
       .then(responseJson => {
         console.log(responseJson)
-        console.log('nextProps2', nextProps)
-
         this.setState({
           data: [
             { name: responseJson.data.name },
