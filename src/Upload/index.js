@@ -1,10 +1,29 @@
 import React, { Component } from 'react'
 import { geolocated, GeolocatedProps } from 'react-geolocated'
 import axios from 'axios'
+import styled, { css } from 'styled-components'
 
 export const sleep = sec => {
   return new Promise(resolve => setTimeout(resolve, sec * 1000))
 }
+const Wrap = styled.div`
+  background: rgb(144, 244, 178);
+  height: 250px;
+  width: 200px;
+  border-radius: 20px;
+`
+const CityName = styled.div`
+  padding-top: 40px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+`
+const TempWrap = styled.div`
+  padding-top: 30px;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+`
 
 //geolocated props example code
 class Demo1 extends React.Component {
@@ -80,7 +99,7 @@ class Upload extends React.Component {
           data: [
             { name: responseJson.data.name },
             {
-              temp: responseJson.data.main.temp - 273.15 + '°C',
+              temp: Math.round(responseJson.data.main.temp - 273.15) + '°C',
             },
           ],
         })
@@ -91,9 +110,12 @@ class Upload extends React.Component {
       <div>
         <div>weather api</div>
         <br />
-        city name={this.state.data[0]['name']}
+        <Wrap>
+          <CityName>{this.state.data[0]['name']}</CityName>
+          <br />
+          <TempWrap>{this.state.data[1]['temp']}</TempWrap>
+        </Wrap>
         <br />
-        {this.state.data[0]['name']} temp={this.state.data[1]['temp']}
         <br />
         <br />
       </div>
@@ -137,5 +159,5 @@ export default geolocated({
   positionOptions: {
     enableHighAccuracy: false,
   },
-  userDecisionTimeout: 5000,
+  userDecisionTimeout: 50000,
 })(Upload)
