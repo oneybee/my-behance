@@ -48,6 +48,7 @@ const App = () => {
                 <Link1 to="/work">Work</Link1>
 
                 <Link1 to="/upload">Upload</Link1>
+                <a href="/upload">ss</a>
               </LinkPositionA>
             </LinkPositonR>
           </LinkWrap>

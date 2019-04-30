@@ -7,7 +7,7 @@ export const sleep = sec => {
 }
 
 //geolocated props example code
-class Demo extends React.Component {
+class Demo1 extends React.Component {
   render() {
     return !this.props.isGeolocationAvailable ? (
       <div>Your browser does not support Geolocation</div>
@@ -48,7 +48,7 @@ geolocated({
     enableHighAccuracy: false,
   },
   userDecisionTimeout: 5000,
-})(Demo)
+})(Demo1)
 
 //upload page
 class Upload extends React.Component {
@@ -132,27 +132,6 @@ class Upload extends React.Component {
     // )
   }
 }
-
-//axios example code
-
-// function getWeather(props) {
-//   axios
-//     .get('http://api.openweathermap.org/data/2.5/weather', {
-//       params: {
-//         lat: 30.18,
-//         lon: 30.87,
-//         appid: '59bc39177608b635b3514f8156021c3f',
-//       },
-//     })
-//     .then(function(response) {
-//       // console.log(response)
-//     })
-
-//     .catch(function(error) {
-//       // console.log(error)
-//     })
-// }
-// getWeather()
 
 export default geolocated({
   positionOptions: {
