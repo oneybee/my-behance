@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import { geolocated, GeolocatedProps } from 'react-geolocated'
 import axios from 'axios'
 
-var lat = ['35.555861199999995']
-var lon = ['127.0780834']
-
 export const sleep = sec => {
   return new Promise(resolve => setTimeout(resolve, sec * 1000))
 }
@@ -64,52 +61,6 @@ class Upload extends React.Component {
     }
   }
 
-  async componentDidMount(props) {
-    //fetch weather api
-
-    // fetch('http://api.openweathermap.org/data/2.5/forecast?APPID=59bc39177608b635b3514f8156021c3f&lat=' + '35' + '&lon=' + lon)
-    // fetch('http://api.openweathermap.org/data/2.5/forecast?APPID=59bc39177608b635b3514f8156021c3f&', {
-    //   params: {
-    //     lat: 35,
-    //     lon: 127,
-    //   },
-    // })
-    console.log('test1', this.props)
-
-    // await sleep(2)
-
-    console.log('test3', this.props)
-
-    //axios code and it works well, but state was not work well
-    console.log('test')
-    await sleep(2)
-
-    // console.log(this.props.coords.latitude)
-    // axios
-    //   .get('http://api.openweathermap.org/data/2.5/weather', {
-    //     params: {
-    //       lat: 35,
-    //       lon: 30.87,
-    //       appid: '59bc39177608b635b3514f8156021c3f',
-    //     },
-    //   })
-    //   .then(responseJson => {
-    //     // console.log(responseJson.data.name)
-    //     // console.log(this.props.coords.longitude)
-    //     console.log('test2', this.props)
-
-    //     this.setState({
-    //       // data: [{ name: responseJson.city.name, cnt: responseJson.cnt, cloud: responseJson.list[2].clouds.all }],
-    //       data: [{ name: responseJson.data.name }],
-    //       // lat: [this.props.coords.latitude],
-    //       // lon: this.props.coords.longitude,
-    //     })
-    //     // console.log(lat)
-    //     // console.log(lon)
-    //   })
-
-    // .then(response => response.json())
-  }
   componentWillReceiveProps(nextProps) {
     console.log('nextProps', nextProps)
     console.log('sss', nextProps.coords.latitude)
@@ -123,22 +74,11 @@ class Upload extends React.Component {
         },
       })
       .then(responseJson => {
-        // console.log(responseJson.data.name)
-        // console.log(this.props.coords.longitude)
-        console.log('test2', this.props)
-
+        console.log(responseJson)
         this.setState({
-          // data: [{ name: responseJson.city.name, cnt: responseJson.cnt, cloud: responseJson.list[2].clouds.all }],
           data: [{ name: responseJson.data.name }],
-          // lat: [this.props.coords.latitude],
-          // lon: this.props.coords.longitude,
         })
-        // console.log(lat)
-        // console.log(lon)
       })
-    // this.setState({
-    //   likesIncreasing: nextProps.likeCount > this.props.likeCount
-    // });
   }
   render() {
     return (
