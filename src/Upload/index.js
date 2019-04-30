@@ -47,24 +47,25 @@ geolocated({
   positionOptions: {
     enableHighAccuracy: false,
   },
-  userDecisionTimeout: 5000,
+  userDecisionTimeout: 100000,
 })(Demo1)
 
 //upload page
+
+// const Upload= (props) => {
 class Upload extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       data: [{ name: 'name', value: 'ssss' }, { name: 'cnt', value: 19 }],
-      lat: [],
-      lon: [],
+      // lat: [],
+      // lon: [],
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  async componentWillReceiveProps(nextProps) {
     console.log('nextProps', nextProps)
     console.log('sss', nextProps.coords.latitude)
-
     axios
       .get('http://api.openweathermap.org/data/2.5/weather', {
         params: {
@@ -75,6 +76,8 @@ class Upload extends React.Component {
       })
       .then(responseJson => {
         console.log(responseJson)
+        console.log('nextProps2', nextProps)
+
         this.setState({
           data: [
             { name: responseJson.data.name },
@@ -88,7 +91,6 @@ class Upload extends React.Component {
   render() {
     return (
       <div>
-        {/* <Demo /> */}
         <div>weather api</div>
         <br />
         city name={this.state.data[0]['name']}
