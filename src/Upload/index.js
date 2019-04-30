@@ -13,14 +13,14 @@ const Wrap = styled.div`
   border-radius: 20px;
 `
 const CityName = styled.div`
-  padding-top: 40px;
-  font-size: 20px;
+  padding-top: 20px;
+  font-size: 40px;
   color: white;
   text-align: center;
 `
 const TempWrap = styled.div`
   padding-top: 30px;
-  font-size: 20px;
+  font-size: 30px;
   color: white;
   text-align: center;
 `
@@ -84,7 +84,6 @@ class Upload extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     console.log('nextProps', nextProps)
-    // console.log('sss', nextProps.coords.latitude)
     axios
       .get('https://api.openweathermap.org/data/2.5/weather', {
         params: {
@@ -95,13 +94,10 @@ class Upload extends React.Component {
       })
       .then(responseJson => {
         console.log(responseJson)
+        console.log(responseJson.data.rain)
+
         this.setState({
-          data: [
-            { name: responseJson.data.name },
-            {
-              temp: Math.round(responseJson.data.main.temp - 273.15) + '°C',
-            },
-          ],
+          data: [{ name: responseJson.data.name }, { temp: Math.round(responseJson.data.main.temp - 273.15) + '°C', maxTemp: Math.round(responseJson.data.main.temp_max - 273.15) + '°C', minTemp: Math.round(responseJson.data.main.temp_min - 273.15) + '°C' }],
         })
       })
   }
@@ -114,6 +110,8 @@ class Upload extends React.Component {
           <CityName>{this.state.data[0]['name']}</CityName>
           <br />
           <TempWrap>{this.state.data[1]['temp']}</TempWrap>
+          <br />
+          {this.state.data[1]['maxTemp']} / {this.state.data[1]['minTemp']}
         </Wrap>
         <br />
         <br />
