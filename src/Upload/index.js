@@ -57,35 +57,34 @@ class Upload extends React.Component {
   componentDidMount() {
     //fetch weather api
 
-    fetch('http://api.openweathermap.org/data/2.5/forecast?APPID=59bc39177608b635b3514f8156021c3f&lat=' + '35' + '&lon=' + lon)
-      // fetch('http://api.openweathermap.org/data/2.5/forecast?APPID=59bc39177608b635b3514f8156021c3f&', {
-      //   params: {
-      //     lat: 35,
-      //     lon: 127,
-      //   },
-      // })
+    // fetch('http://api.openweathermap.org/data/2.5/forecast?APPID=59bc39177608b635b3514f8156021c3f&lat=' + '35' + '&lon=' + lon)
+    // fetch('http://api.openweathermap.org/data/2.5/forecast?APPID=59bc39177608b635b3514f8156021c3f&', {
+    //   params: {
+    //     lat: 35,
+    //     lon: 127,
+    //   },
+    // })
 
-      //axios code and it works well, but state was not work well
+    //axios code and it works well, but state was not work well
 
-      // axios
-      //   .get('http://api.openweathermap.org/data/2.5/weather', {
-      //     params: {
-      //       lat: 30.18,
-      //       lon: 30.87,
-      //       appid: '59bc39177608b635b3514f8156021c3f',
-      //     },
-      //   })
+    axios
+      .get('http://api.openweathermap.org/data/2.5/weather', {
+        params: {
+          lat: 30.18,
+          lon: 30.87,
+          appid: '59bc39177608b635b3514f8156021c3f',
+        },
+      })
 
-      .then(response => response.json())
+      // .then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson)
-        console.log(this.props.coords)
+        console.log(responseJson.data.name)
+        console.log(this.props.coords.latitude)
+        console.log(this.props.coords.longitude)
+
         this.setState({
-          data: [{ name: responseJson.city.name, cnt: responseJson.cnt, cloud: responseJson.list[2].clouds.all }],
-        })
-        this.setState({
-          // lat: [this.props.coords.latitude],
-          // lon: [this.props.coords.longitude],
+          // data: [{ name: responseJson.city.name, cnt: responseJson.cnt, cloud: responseJson.list[2].clouds.all }],
+          data: [{ name: responseJson.data.name }],
         })
       })
   }
@@ -95,6 +94,7 @@ class Upload extends React.Component {
         <div>weather api</div>
         <br />
         city name={this.state.data[0]['name']}
+        {/* {responseJson.data.name} */}
         <br />
         seoul cnt={this.state.data[0]['cnt']}
         <br />
