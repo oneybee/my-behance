@@ -76,7 +76,12 @@ class Upload extends React.Component {
       .then(responseJson => {
         console.log(responseJson)
         this.setState({
-          data: [{ name: responseJson.data.name }],
+          data: [
+            { name: responseJson.data.name },
+            {
+              temp: responseJson.data.main.temp - 273.15 + '°C',
+            },
+          ],
         })
       })
   }
@@ -88,9 +93,8 @@ class Upload extends React.Component {
         <br />
         city name={this.state.data[0]['name']}
         <br />
-        seoul cnt={this.state.data[0]['cnt']}
+        {this.state.data[0]['name']} temp={this.state.data[1]['temp']}
         <br />
-        seoul cloud info={this.state.data[0]['cloud']}
         <br />
       </div>
     )
