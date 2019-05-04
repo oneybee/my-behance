@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 import { Field, reduxForm } from 'redux-form'
+import CreditCardInput from 'react-credit-card-input'
 
 const Wrap = styled.div`
   background-color: rgb(35, 72, 166);
@@ -51,6 +52,9 @@ const Form = props => {
             <Field name="notes" component="textarea" />
           </div>
         </div>
+
+        <CreditCardInput />
+
         <div>
           <button type="submit" disabled={pristine || submitting}>
             Submit
