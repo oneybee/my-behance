@@ -4,9 +4,11 @@ import styled, { css } from 'styled-components'
 import { Field, reduxForm } from 'redux-form'
 
 const Wrap = styled.div`
-  /* background-color: #000; */
-  width: calc(100% - 190px);
-  margin: 0 auto;
+  background-color: rgb(35, 72, 166);
+  /* width: calc(100% - 190px); */
+  color: white;
+  margin: 50px 15% 0 15%;
+  line-height: 30px;
 `
 const ImageWrap = styled.div`
   height: 40px;
@@ -21,32 +23,47 @@ const Form = props => {
   const { handleSubmit, pristine, reset, submitting } = props
 
   return (
-    // <Wrap>
-    //   <ImageWrap>
-    //     <Image src="https://mir-s3-cdn-cf.behance.net/user/115/b1b97f103255.570d0a8896fd4.jpg" />
-    //     form
-    //   </ImageWrap>
-    <div>
-      <br />
+    <Wrap>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>First Name</label>
+          <label>성함</label>
           <div>
-            {/* <Field name="firstName" type="text" conponent="input" placeholder="First Name" /> */}
-
-            {/* <Field name="username" type="text" label="주문자 성함" width={150} /> */}
+            <Field name="성함" component="input" type="text" placeholder="성함" />
           </div>
         </div>
 
-        <button type="submit" disabled={pristine || submitting}>
-          Submit
-        </button>
+        <div>
+          <label>이메일</label>
+          <div>
+            <Field name="email" component="input" type="email" placeholder="Email" />
+          </div>
+        </div>
+        <div>
+          <label>전화번호</label>
+          <div>
+            <Field name="번호" component="input" type="string" placeholder="번호" />
+          </div>
+        </div>
+
+        <div>
+          <label>Notes</label>
+          <div>
+            <Field name="notes" component="textarea" />
+          </div>
+        </div>
+        <div>
+          <button type="submit" disabled={pristine || submitting}>
+            Submit
+          </button>
+          <button type="button" disabled={pristine || submitting} onClick={reset}>
+            Clear Values
+          </button>
+        </div>
       </form>
-    </div>
-    // </Wrap>
+    </Wrap>
   )
 }
 
 export default reduxForm({
-  form: 'simple', // a unique identifier for this form
+  form: 'payment', // a unique identifier for this form
 })(Form)
