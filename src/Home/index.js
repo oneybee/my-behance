@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import { geolocated, GeolocatedProps } from 'react-geolocated'
 import axios from 'axios'
+import { Field, reduxForm } from 'redux-form'
 
 import { Row, Column } from 'ruucm-blocks'
 import img001 from '../Img/1.jpg'
