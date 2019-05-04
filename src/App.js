@@ -5,6 +5,7 @@ import styled, { css } from 'styled-components'
 import Home from './Home'
 import Work from './Work'
 import Upload from './Upload'
+import Form from './Form'
 
 const Wrap = styled.div`
   /* background: black; */
@@ -49,7 +50,7 @@ const App = () => {
                 <Link1 to="/work">Work</Link1>
 
                 <Link1 to="/upload">Upload</Link1>
-                <a href="/upload">ss</a>
+                <Link1 to="/form">Form</Link1>
               </LinkPositionA>
             </LinkPositonR>
           </LinkWrap>
@@ -58,6 +59,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route path="/work" component={Work} />
           <Route path="/upload" component={Upload} />
+          <Route path="/form" component={Form} />
         </div>
       </Wrap>
     </Router>
