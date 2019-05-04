@@ -24,6 +24,7 @@ const Link1 = styled(Link)`
 `
 const LinkPositonR = styled.div`
   position: relative;
+  height: 60px;
 `
 const LinkPositionA = styled.div`
   position: absolute;
