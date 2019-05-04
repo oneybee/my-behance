@@ -9,6 +9,7 @@
     "react-geolocated": "^2.4.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "redux-form": "^8.2.0",
     "ruucm-blocks": "https://github.com/ruucm/ruucm-blocks",
     "ruucm-util": "^0.14.0",
     "styled-components": "^4.2.0"
