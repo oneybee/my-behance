@@ -20,6 +20,43 @@ const Image = styled.img`
   height: 100%;
 `
 
+const validate = values => {
+  const errors = {}
+  if (!values.username) {
+    errors.username = 'Required'
+  } else if (values.username.length > 15) {
+    errors.username = 'Must be 15 characters or less'
+  }
+  if (!values.email) {
+    errors.email = 'Required'
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address'
+  }
+  if (!values.age) {
+    errors.age = 'Required'
+  } else if (isNaN(Number(values.age))) {
+    errors.age = 'Must be a number'
+  } else if (Number(values.age) < 18) {
+    errors.age = 'Sorry, you must be at least 18 years old'
+  }
+  return errors
+}
+const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+  <div>
+    <label>{label}</label>
+    <div>
+      <input {...input} placeholder={label} type={type} />
+      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+    </div>
+  </div>
+)
+const warn = values => {
+  const warnings = {}
+  if (values.age < 19) {
+    warnings.age = 'Hmm, you seem a bit young...'
+  }
+  return warnings
+}
 const Form = props => {
   const { handleSubmit, pristine, reset, submitting } = props
 
@@ -29,14 +66,14 @@ const Form = props => {
         <div>
           <label>성함</label>
           <div>
-            <Field name="성함" component="input" type="text" placeholder="성함" />
+            <Field name="성함" component={renderField} type="text" placeholder="성함" />
           </div>
         </div>
 
         <div>
           <label>이메일</label>
           <div>
-            <Field name="email" component="input" type="email" placeholder="Email" />
+            <Field name="email" component={renderField} type="email" placeholder="Email" />
           </div>
         </div>
         <div>
@@ -56,7 +93,7 @@ const Form = props => {
         <CreditCardInput />
 
         <div>
-          <button type="submit" disabled={pristine || submitting}>
+          <button type="submit" disabled={submitting}>
             Submit
           </button>
           <button type="button" disabled={pristine || submitting} onClick={reset}>
@@ -70,4 +107,6 @@ const Form = props => {
 
 export default reduxForm({
   form: 'payment', // a unique identifier for this form
+  validate, // <--- validation function given to redux-form
+  warn, //
 })(Form)
