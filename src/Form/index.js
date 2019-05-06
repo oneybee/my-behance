@@ -22,11 +22,20 @@ const Image = styled.img`
 
 const validate = values => {
   const errors = {}
+  if (!values.username) {
+    errors.username = 'Required'
+  } else if (values.username.length < 1) {
+    errors.username = '1글자 이상을 입력해야 합니다.'
+  }
 
   if (!values.email) {
     errors.email = 'Required'
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Invalid email address'
+  }
+
+  if (!values.번호) {
+    errors.번호 = 'Required'
   }
 
   return errors
@@ -50,7 +59,7 @@ const Form = props => {
         <div>
           <label>성함</label>
           <div>
-            <Field name="성함" component={renderField} type="text" placeholder="성함" />
+            <Field name="username" component={renderField} type="text" placeholder="성함" />
           </div>
         </div>
 
@@ -63,7 +72,7 @@ const Form = props => {
         <div>
           <label>전화번호</label>
           <div>
-            <Field name="번호" component="input" type="string" placeholder="번호" />
+            <Field name="번호" component={renderField} type="string" placeholder="번호" />
           </div>
         </div>
 
@@ -91,5 +100,5 @@ const Form = props => {
 
 export default reduxForm({
   form: 'payment', // a unique identifier for this form
-  validate, // <--- validation function given to redux-form
+  validate,
 })(Form)
