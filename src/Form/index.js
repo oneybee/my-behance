@@ -50,6 +50,15 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
   </div>
 )
 
+const submitButton = ({ input, label, type, meta: { touched, error, warning } }) => (
+  <div>
+    <label>submit</label>
+    <div>
+      <input {...input} placeholder={label} type={type} />
+      {touched && (error && <span>{error}</span>)}
+    </div>
+  </div>
+)
 const Form = props => {
   const { handleSubmit, pristine, reset, submitting } = props
 
@@ -79,16 +88,17 @@ const Form = props => {
         <div>
           <label>Notes</label>
           <div>
-            <Field name="notes" component="textarea" />
+            <Field name="notes" component={renderField} />
           </div>
         </div>
 
         <CreditCardInput />
 
         <div>
-          <button type="submit" disabled={submitting}>
+          <button type="submit" component={submitButton}>
             Submit
           </button>
+          {/* {error && { submitButton }} */}
           <button type="button" disabled={pristine || submitting} onClick={reset}>
             Clear Values
           </button>
